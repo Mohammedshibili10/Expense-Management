@@ -8,6 +8,7 @@ import { store } from '../../../redux/store';
 import axios from 'axios';
 
 export default function Sidebar({ menus }) {
+    const menuItems = Array.isArray(menus) ? menus : [];
     const {user}=useSelector(store=>store.auth)
     const pathname= usePathname();
     const router = useRouter();
@@ -51,7 +52,7 @@ export default function Sidebar({ menus }) {
                         </div>
                     </div>
                     <div  className='  space-y-5 mt-10 '>
-                        {menus.map((item, index) => {
+                        {menuItems.map((item, index) => {
 
                             const Icon = item.icon;
                             const isActive = pathname === item.link ? 'bg-[#cbdaf5] text-blue-500' : 'text-gray-500 hover:bg-[#cbdaf5] hover:text-blue-500';
